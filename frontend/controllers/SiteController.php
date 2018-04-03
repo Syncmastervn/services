@@ -18,7 +18,7 @@ use frontend\models\ContactForm;
 use frontend\models\UserLogin;
 use frontend\models\UploadImage;
 use frontend\models\Province;
-
+use frontend\models\Ward;
 /**
  * Site controller
  */
@@ -211,6 +211,15 @@ class SiteController extends Controller
                 echo $row->id;
                 echo ";";
             }   
+        }
+        
+        if($request->get('data') === 'ward-name')
+        {
+            $ward = Ward::find()->all();
+            foreach($ward as $row)
+            {
+                echo $row->name . ';';
+            }
         }
        
     }
