@@ -213,9 +213,18 @@ class SiteController extends Controller
             }   
         }
         
+        if($request->get('data') === 'disctrict')
+        {
+            $provinceId = $request->get('provinceId');
+            
+        }
+        
         if($request->get('data') === 'ward-name')
         {
-            $ward = Ward::find()->all();
+            $provinceId = $request->get('provinceId');
+            $ward = Ward::find()
+                    ->where(['districtId'=>$provinceId])
+                    ->all();
             foreach($ward as $row)
             {
                 echo $row->name . ';';
