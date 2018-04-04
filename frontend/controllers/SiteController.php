@@ -17,8 +17,11 @@ use frontend\models\SignupForm;
 use frontend\models\ContactForm;
 use frontend\models\UserLogin;
 use frontend\models\UploadImage;
+
+//Database 
 use frontend\models\Province;
 use frontend\models\Ward;
+use frontend\models\District;
 /**
  * Site controller
  */
