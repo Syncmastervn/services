@@ -216,17 +216,23 @@ class SiteController extends Controller
             }   
         }
         
-        if($request->get('data') === 'disctrict')
+        if($request->get('data') === 'district-name')
         {
             $provinceId = $request->get('provinceId');
-            
+            $district = District::find()
+                    ->where(['provinceId'=>$provinceId])
+                    ->all();
+            foreach($district as $row)
+            {
+                echo $row->name . ';';
+            }
         }
         
         if($request->get('data') === 'ward-name')
         {
-            $provinceId = $request->get('provinceId');
+            $districtId = $request->get('districtId');
             $ward = Ward::find()
-                    ->where(['districtId'=>$provinceId])
+                    ->where(['districtId'=>$districtId])
                     ->all();
             foreach($ward as $row)
             {
