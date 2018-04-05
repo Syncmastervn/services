@@ -8,13 +8,17 @@ class Register extends \yii\base\Model
     public $userName;
     public $email;
     public $fullName;
+    public $province;
+    public $district;
+    public $ward;
+    public $street;
     public $selector;
     
     public function rules(){
         return [
-            [['userName'],'required'],
+            [['userName','province','district','ward','street'],'required'],
             ['userName','string','min'=>3],
-            ['email','email']
+            ['email','email'],
         ];
     }
     

@@ -7,6 +7,7 @@
 use yii\helpers\Html;
 use yii\helpers\ArrayHelper;
 use yii\widgets\ActiveForm;
+use frontend\models\Province;
 ?>
         <div class="header">
         	<nav class="navbar  fixed-top navbar-site navbar-light bg-light navbar-expand-md"
@@ -127,6 +128,12 @@ use yii\widgets\ActiveForm;
                         
                             <?= $form->field($model,'userName')->textInput(['autofocus'=>true]); ?>
                             <?= $form->field($model, 'fullName'); ?>
+                            <?= $form->field($model,'province')->dropDownList(
+                                        ArrayHelper::map(Province::find()->all(),'id','name'),
+                                                    [
+                                                        'prompt' => 'Tỉnh/thành phố'
+                                                    ]
+                                    ); ?>
                             <?= $form->field($model, 'selector')->dropDownList([
                                     'a' => 'ItemA',
                                     'b' => 'ItemB'
