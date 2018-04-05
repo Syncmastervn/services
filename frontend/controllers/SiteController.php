@@ -12,16 +12,20 @@ use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 
-//Kien code
-
+/*
+ * Kien's Code
+ */
+//Models
 use frontend\models\ContactForm;
 use frontend\models\UserLogin;
 use frontend\models\UploadImage;
+use frontend\models\Register;
 
 //Database 
 use frontend\models\Province;
 use frontend\models\Ward;
 use frontend\models\District;
+
 /**
  * Site controller
  */
@@ -167,7 +171,23 @@ class SiteController extends Controller
     
     public function actionRegister(){
         Yii::$app->controller->renderPartial('register-assets');
+        
+        $model = new Register();
+        $request = Yii::$app->request;
+        $data = null;
+        
+        if($model->load(Yii::$app->request->post()) && $model->validate())
+        {
+            $data = [
+                'username'  => $request->post('Register')['userName'],
+                'fullname'  => $request->post('Register')['fullName'],
+                'selector'  => $request->post('Register')['selector']
+            ];
+        }
+        
         return $this->render('register',[
+            'data'          => $data,
+            'model'         => $model,
             'imageFolder'   => $this->imageFolder,
             'iconFolder'    => $this->iconFolder
         ]);

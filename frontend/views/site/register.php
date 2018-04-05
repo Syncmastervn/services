@@ -5,8 +5,8 @@
 /* @var $model \frontend\models\SignupForm */
 
 use yii\helpers\Html;
-use yii\bootstrap\ActiveForm;
-
+use yii\helpers\ArrayHelper;
+use yii\widgets\ActiveForm;
 ?>
         <div class="header">
         	<nav class="navbar  fixed-top navbar-site navbar-light bg-light navbar-expand-md"
@@ -123,29 +123,21 @@ use yii\bootstrap\ActiveForm;
                     <div class="inner-box category-content">
                         <h2 class="title-2"><i class="icon-user-add"></i> Create your account, Its free </h2>
 
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <form class="form-horizontal">
-                                    <fieldset>
-                                        <h1>This is regiser fields </h1>
-                                        <p>
-                                            <select class="selectpicker district">
-                                                <option value="14k">14k</option>
-                                                <option value="18k">18k</option>
-                                                <option value="10k">10k</option>
-                                            </select>
-                                        </p>
-                                        <p>
-                                            <select class="selectpicker province">
-                                                <option value="Huyện thị">Huyện thị</option>
-                                                <option value="Chưa chọn">Chưa chọn tỉnh thành</option>
-                                            </select>
-                                        </p>
-                                        <br><br><br><br><br><br><br><br>
-                                    </fieldset>
-                                </form>
-                            </div>
-                        </div>
+                        <?php $form = ActiveForm::begin(['id' => 'RegisterForm']); ?>
+                        
+                            <?= $form->field($model,'userName')->textInput(['autofocus'=>true]); ?>
+                            <?= $form->field($model, 'fullName'); ?>
+                            <?= $form->field($model, 'selector')->dropDownList([
+                                    'a' => 'ItemA',
+                                    'b' => 'ItemB'
+                            ]); ?>
+                        <hr>
+                            <?= Html::submitButton('Post',['class'=>'btn btn-success']); ?>
+                            <?php if($data['username'] != null): ?>
+                                <p>User name: <?= $data['username'] ?>
+                            <?php endif; ?>
+                        <?php $form = ActiveForm::end(); ?>
+                        
                     </div>
                 </div>
                 <!-- /.page-content -->
