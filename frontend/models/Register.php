@@ -26,7 +26,9 @@ class Register extends \yii\base\Model
         return [
             'userName' => 'Tên đăng nhập',
             'fullName' => 'Tên đầy đủ',
-            'selector' => 'Lựa chọn'
+            'selector' => 'Lựa chọn',
+            'province' => 'Tỉnh / thành phố',
+            'district' => 'Quận / huyện'
         ];
     }
 }

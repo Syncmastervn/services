@@ -134,7 +134,7 @@ use frontend\models\Province;
                                                         'prompt' => 'Tỉnh/thành phố'
                                                     ]
                                     ); ?>
-                            <?= $form->field($model, 'selector')->dropDownList([
+                            <?= $form->field($model, 'district')->dropDownList([
                                     'a' => 'ItemA',
                                     'b' => 'ItemB'
                             ]); ?>
