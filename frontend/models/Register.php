@@ -28,7 +28,8 @@ class Register extends \yii\base\Model
             'fullName' => 'Tên đầy đủ',
             'selector' => 'Lựa chọn',
             'province' => 'Tỉnh / thành phố',
-            'district' => 'Quận / huyện'
+            'district' => 'Quận / huyện',
+            'ward'     => 'Xã / phường'
         ];
     }
 }

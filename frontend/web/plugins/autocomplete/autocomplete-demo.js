@@ -3,6 +3,7 @@
 
 $(function () {
     'use strict';
+    return false;
 
     var usastatesArray = $.map(usastates, function (value, key) {
         return {value: value, data: key};

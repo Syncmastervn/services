@@ -216,9 +216,33 @@ class SiteController extends Controller
     
     public function actionApi(){
         $request = Yii::$app->request;
+        
+        switch($request->get('data')) {
+            case 'province':
+                echo json_encode(Province::find()->asArray()->all());
+                break;
+            case 'district':
+                $provinceId = $request->get('provinceId');
+                $district = District::find()
+                    ->where(['provinceId'=>$provinceId])
+                    ->asArray()
+                    ->all();
+                echo json_encode($district);
+                break;
+            case 'ward':
+                $districtId = $request->get('districtId');
+                $ward = Ward::find()
+                        ->where(['districtId'=>$districtId])
+                        ->asArray()
+                        ->all();
+                echo json_encode($ward);
+                break;
+        }
+        
         if($request->get('data') === 'province-name')
         {
             $province = Province::find()->all();
+            
             foreach($province as $row)
             {
                 echo $row->name;
@@ -269,6 +293,18 @@ class SiteController extends Controller
             foreach($ward as $row)
             {
                 echo $row->name . ';';
+            }
+        }
+        
+        if($request->get('data') === 'ward-id')
+        {
+            $districtId = $request->get('districtId');
+            $ward = Ward::find()
+                    ->where(['districtId' => $districtId])
+                    ->all();
+            foreach($ward as $row)
+            {
+                echo $row->id . ';';
             }
         }
        

@@ -137,6 +137,9 @@ use frontend\models\Province;
                             <?= $form->field($model, 'district')->dropDownList([
                                     '0' => 'Chọn huyện/thị'
                             ]); ?>
+                            <?= $form->field($model, 'ward')->dropDownList([
+                                    '0' => 'Chọn xã/phường'
+                            ]); ?>
                         <hr>
                             <?= Html::submitButton('Post',['class'=>'btn btn-success']); ?>
                             <?php if($data['username'] != null): ?>

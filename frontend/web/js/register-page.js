@@ -18,23 +18,73 @@ $("document").ready(function(){
         $(".province ul").append("<li data-value='19k' class='option'>19k</li>");
     });
 
-    $.get('api',{ data: "province-name" },
-        function(returnedData){
-            provinceName = returnedData.split(";");
-            console.log("provinceName:" + provinceName[1]);
-        }
-    );
+//    $.get('api',{ data: "province-name" },
+//        function(returnedData){
+//            provinceName = returnedData.split(";");
+//            console.log("provinceName:" + provinceName[1]);
+//        }
+//    );
+    
+    $.ajax({
+        url: "api",
+        data: {
+            data: "province"
+        },
+        method: "GET",
+        dataType: "JSON"
+    }).done(function(dataResponse) {
+        provinceName = dataResponse.map(item => item.name);
+        provinceId = dataResponse.map(item => item.id);
+    });
 
     
     $("#register-province").change(function(){
         //console.log("Province: " + $(this).val());
         districtName = null;
         districtId = null;
-        getAjax("api?data=district-name&provinceId="+$(this).val(),'district-name');
-        getAjax("api?data=district-id&provinceId="+$(this).val(),'district-id');
+        $.ajax({
+            url: "api",
+            data: {
+                data: "district",
+                provinceId: $(this).val()
+            },
+            method: "GET",
+            dataType: "JSON"
+        }).done(function(dataResponse) {
+            console.log(dataResponse);
+//            provinceName = dataResponse.map(item => item.name);
+//            provinceId = dataResponse.map(item => item.id);
+            districtName = dataResponse.map(item => item.name);
+            districtId = dataResponse.map(item => item.id);
+            
+            updateDistrict();
+        });
     });
     
-    function getAjax(httpLink,setData){
+    $("#register-district").change(function(){
+        console.log("district: " + $(this).val());
+        console.log("district changed");
+        wardName = null;
+        wardId = null;
+        $.ajax({
+            url: "api",
+            data: {
+                data: "ward",
+                districtId: $(this).val()
+            },
+            method: "GET",
+            dataType: "JSON"
+        }).done(function(dataResponse) {
+            console.log(dataResponse);
+            wardName = dataResponse.map(item => item.name);
+            wardId = dataResponse.map(item => item.id);
+            
+            updateWard();
+        });
+        
+    });
+    
+    function getAjax(httpLink, setData = null, method = 'GET', dataType = 'JSON', callback = null){
         var array = new Object();
         var xhttp = new XMLHttpRequest();
         var txt;
@@ -56,15 +106,50 @@ $("document").ready(function(){
                 updateDistrict();
                 status += 1;
             }
-            if(status === 2)
-            {
-                updateDistrict();
-            }
+            
+            
+//            if(status === 2)
+//            {
+//                updateDistrict();
+//            }
+            
+            
            }
         };
         xhttp.open("GET", httpLink, true);
         xhttp.send();
         
+    }
+    
+    function getAjax_ward(httpLink,setData){
+        var array = new Object();
+        var xhttp = new XMLHttpRequest();
+        var txt;
+        var status = 0;
+        xhttp.onreadystatechange = function() {
+        if (this.readyState === 4 && this.status === 200) {
+                //console.log(this.responseText);
+                txt = this.responseText;
+                array = txt.split(";");
+            
+            if(setData === "ward-name")
+            {
+                wardName = txt.split(";");
+                status += 1;
+            }
+            if(setData === "ward-id")
+            {
+                wardId = txt.split(";");
+                status += 1;
+                updateWard();
+            }
+
+
+            
+           }
+        };
+        xhttp.open("GET", httpLink, true);
+        xhttp.send();
     }
     
     function updateDistrict(){
@@ -75,6 +160,18 @@ $("document").ready(function(){
         for(var i = 0 ; i < $arrLength ; i++)
         {
             $("#register-district").append("<option value='"+ districtId[i] +"'>" + districtName[i] + "</option>");
+        }
+    }
+    
+    function updateWard(){
+        console.log("ward function");
+        $arrLength = wardName.length;
+        $('#register-ward').empty();
+        $('#register-ward').append("<option value='0'>Chọn xa/phuong *</option>");
+        
+        for(var i = 0 ; i < $arrLength ; i++)
+        {
+            $("#register-ward").append("<option value='"+ wardId[i] +"'>" + wardName[i] + "</option>");
         }
     }
 
