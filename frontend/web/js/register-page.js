@@ -27,38 +27,55 @@ $("document").ready(function(){
 
     
     $("#register-province").change(function(){
-        console.log("Province: " + $(this).val());
-        districtName = getAjax("api?data=district-name&provinceId="+$(this).val(),'district-name');
-        districtId = getAjax("api?data=district-id&provinceId="+$(this).val(),'district-id');
+        //console.log("Province: " + $(this).val());
+        districtName = null;
+        districtId = null;
+        getAjax("api?data=district-name&provinceId="+$(this).val(),'district-name');
+        getAjax("api?data=district-id&provinceId="+$(this).val(),'district-id');
     });
     
     function getAjax(httpLink,setData){
         var array = new Object();
         var xhttp = new XMLHttpRequest();
         var txt;
+        var status = 0;
         xhttp.onreadystatechange = function() {
         if (this.readyState === 4 && this.status === 200) {
                 //console.log(this.responseText);
                 txt = this.responseText;
                 array = txt.split(";");
-                console.log(txt);
-                //console.log(array[2]);
             if(setData === "district-name")
             {
                 districtName = txt.split(";");
-                console.log(districtName[2]);
+                status += 1;
             }
             
             if(setData === "district-id")
             {
                 districtId = txt.split(";");
-                console.log(districtId[2]);
+                updateDistrict();
+                status += 1;
+            }
+            if(status === 2)
+            {
+                updateDistrict();
             }
            }
         };
         xhttp.open("GET", httpLink, true);
         xhttp.send();
-
+        
+    }
+    
+    function updateDistrict(){
+        $arrLength = districtName.length;
+        $('#register-district').empty();
+        $('#register-district').append("<option value='0'>Chọn huyện/thị *</option>");
+        
+        for(var i = 0 ; i < $arrLength ; i++)
+        {
+            $("#register-district").append("<option value='"+ districtId[i] +"'>" + districtName[i] + "</option>");
+        }
     }
 
 

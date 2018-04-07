@@ -135,8 +135,7 @@ use frontend\models\Province;
                                                     ]
                                     ); ?>
                             <?= $form->field($model, 'district')->dropDownList([
-                                    'a' => 'ItemA',
-                                    'b' => 'ItemB'
+                                    '0' => 'Chọn huyện/thị'
                             ]); ?>
                         <hr>
                             <?= Html::submitButton('Post',['class'=>'btn btn-success']); ?>
