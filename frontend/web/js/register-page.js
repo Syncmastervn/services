@@ -51,9 +51,7 @@ $("document").ready(function(){
             method: "GET",
             dataType: "JSON"
         }).done(function(dataResponse) {
-            console.log(dataResponse);
-//            provinceName = dataResponse.map(item => item.name);
-//            provinceId = dataResponse.map(item => item.id);
+            //console.log(dataResponse);
             districtName = dataResponse.map(item => item.name);
             districtId = dataResponse.map(item => item.id);
             
@@ -62,8 +60,6 @@ $("document").ready(function(){
     });
     
     $("#register-district").change(function(){
-        console.log("district: " + $(this).val());
-        console.log("district changed");
         wardName = null;
         wardId = null;
         $.ajax({
@@ -75,7 +71,7 @@ $("document").ready(function(){
             method: "GET",
             dataType: "JSON"
         }).done(function(dataResponse) {
-            console.log(dataResponse);
+            //console.log(dataResponse);
             wardName = dataResponse.map(item => item.name);
             wardId = dataResponse.map(item => item.id);
             
@@ -164,10 +160,9 @@ $("document").ready(function(){
     }
     
     function updateWard(){
-        console.log("ward function");
         $arrLength = wardName.length;
         $('#register-ward').empty();
-        $('#register-ward').append("<option value='0'>Chọn xa/phuong *</option>");
+        $('#register-ward').append("<option value='0'>Chọn xã/phường  *</option>");
         
         for(var i = 0 ; i < $arrLength ; i++)
         {
