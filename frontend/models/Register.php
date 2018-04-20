@@ -13,12 +13,16 @@ class Register extends \yii\base\Model
     public $ward;
     public $street;
     public $selector;
+    public $password;
+    public $mobile;
+    public $description;
+    public $introduce;
     
     public function rules(){
         return [
-            [['userName','province','district','ward','street'],'required'],
+            [['userName','province','district','ward','street','password'],'required'],
             ['userName','string','min'=>3],
-            ['email','email'],
+            ['email','email']
         ];
     }
     

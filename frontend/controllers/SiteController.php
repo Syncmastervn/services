@@ -238,76 +238,6 @@ class SiteController extends Controller
                 echo json_encode($ward);
                 break;
         }
-        
-        if($request->get('data') === 'province-name')
-        {
-            $province = Province::find()->all();
-            
-            foreach($province as $row)
-            {
-                echo $row->name;
-                echo ";";
-            }   
-        }
-        
-        if($request->get('data') === 'province-id')
-        {
-            $province = Province::find()->all();
-            foreach($province as $row)
-            {
-                echo $row->id;
-                echo ";";
-            }   
-        }
-        
-        if($request->get('data') === 'district-name')
-        {
-            $provinceId = $request->get('provinceId');
-            $district = District::find()
-                    ->where(['provinceId'=>$provinceId])
-                    ->all();
-            foreach($district as $row)
-            {
-                echo $row->name . ';';
-            }
-        }
-        
-        if($request->get('data') === 'district-id')
-        {
-            $provinceId = $request->get('provinceId');
-            $district = District::find()
-                    ->where(['provinceId'=>$provinceId])
-                    ->all();
-            foreach($district as $row)
-            {
-                echo $row->id . ';';
-            }
-        }
-        
-        if($request->get('data') === 'ward-name')
-        {
-            $districtId = $request->get('districtId');
-            $ward = Ward::find()
-                    ->where(['districtId'=>$districtId])
-                    ->all();
-            foreach($ward as $row)
-            {
-                echo $row->name . ';';
-            }
-        }
-        
-        if($request->get('data') === 'ward-id')
-        {
-            $districtId = $request->get('districtId');
-            $ward = Ward::find()
-                    ->where(['districtId' => $districtId])
-                    ->all();
-            foreach($ward as $row)
-            {
-                echo $row->id . ';';
-            }
-        }
-       
     }
     
     public function actionUploadimage() 
@@ -519,6 +449,13 @@ class SiteController extends Controller
     {
         
         return $this->render('jactive');
+    }
+    
+    public function actionGett(){
+        if(Yii::$app->request->get())
+        {
+            echo "hello";
+        }
     }
 }
 

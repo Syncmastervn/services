@@ -127,7 +127,10 @@ use frontend\models\Province;
                         <?php $form = ActiveForm::begin(['id' => 'RegisterForm']); ?>
                         
                             <?= $form->field($model,'userName')->textInput(['autofocus'=>true]); ?>
+                            <?= $form->field($model,'password')->passwordInput(); ?>
                             <?= $form->field($model, 'fullName'); ?>
+                            <?= $form->field($model, 'mobile')->textInput(['type' => 'number']); ?>
+                            <?= $form->field($model, 'introduce')->textarea(['rows'=>3 , 'maxlength'=>200]); ?>
                             <?= $form->field($model,'province')->dropDownList(
                                         ArrayHelper::map(Province::find()->all(),'id','name'),
                                                     [
