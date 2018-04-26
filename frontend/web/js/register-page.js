@@ -44,7 +44,7 @@ $("document").ready(function(){
             method: "GET",
             dataType: "JSON"
         }).done(function(dataResponse) {
-            //console.log(dataResponse);
+            console.log(dataResponse);
             districtName = dataResponse.map(item => item.name);
             districtId = dataResponse.map(item => item.id);
             
