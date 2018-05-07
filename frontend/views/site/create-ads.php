@@ -1,4 +1,14 @@
+<?php
 
+/* @var $this yii\web\View */
+/* @var $form yii\bootstrap\ActiveForm */
+/* @var $model \frontend\models\SignupForm */
+
+    use yii\helpers\Html;
+    use yii\helpers\ArrayHelper;
+    use yii\widgets\ActiveForm;
+    use frontend\models\Province;
+?>
     <div class="header">
     	<nav class="navbar  fixed-top navbar-site navbar-light bg-light navbar-expand-md"
     		 role="navigation">
@@ -231,84 +241,27 @@
                             <h3 class="page-sub-header2 clearfix no-padding">Hello Jhon Doe </h3>
                             <span class="page-sub-header-sub small">You last logged in at: 01-01-2014 12:40 AM [UK time (GMT + 6:00hrs)]</span>
                         </div>
+                        <?php $form = ActiveForm::begin(['id'=>'createAds-form']); ?>
                         <div id="accordion" class="panel-group">
                             <div class="card card-default">
                                 <div class="card-header">
-                                    <h4 class="card-title"><a href="#collapseB1" aria-expanded="true"  data-toggle="collapse" > My
-                                        details </a></h4>
+                                    <h4 class="card-title"><a href="#collapseB1" aria-expanded="true"  data-toggle="collapse" > Nội dung </a></h4>
                                 </div>
                                 <div class="panel-collapse collapse show" id="collapseB1">
                                     <div class="card-body">
-                                        <form class="form-horizontal" role="form">
-                                            <div class="form-group">
-                                                <label class="col-sm-3 control-label">First Name</label>
-
-                                                <div class="col-sm-9">
-                                                    <input type="text" class="form-control" placeholder="Jhon">
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="col-sm-3 control-label">Last name</label>
-
-                                                <div class="col-sm-9">
-                                                    <input type="text" class="form-control" placeholder="Doe">
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="col-sm-3 control-label">Email</label>
-
-                                                <div class="col-sm-9">
-                                                    <input type="email" class="form-control"
-                                                           placeholder="jhon.deo@example.com">
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="col-sm-3 control-label">Address</label>
-
-                                                <div class="col-sm-9">
-                                                    <input type="text" class="form-control" placeholder="..">
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="Phone" class="col-sm-3 control-label">Phone</label>
-
-                                                <div class="col-sm-9">
-                                                    <input type="text" class="form-control" id="Phone"
-                                                           placeholder="880 124 9820">
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="col-sm-3 control-label">Postcode</label>
-
-                                                <div class="col-sm-9">
-                                                    <input type="text" class="form-control" placeholder="1217">
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group hide"> <!-- remove it if dont need this part -->
-                                                <label class="col-sm-3 control-label">Facebook account map</label>
-
-                                                <div class="col-sm-9">
-                                                    <div class="form-control"><a class="link"
-                                                                                 href="fb.com">Jhone.doe</a> <a
-                                                            class=""> <i class="fa fa-minus-circle"></i></a></div>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <div class="col-sm-offset-3 col-sm-9"></div>
-                                            </div>
-                                            <div class="form-group">
-                                                <div class="col-sm-offset-3 col-sm-9">
-                                                    <button type="submit" class="btn btn-default">Update</button>
-                                                </div>
-                                            </div>
-                                        </form>
+                                        <p>
+                                        <?= $form->field($model,'header'); ?>
+                                        <?= $form->field($model,'brief_content')->textarea(['rows'=>3]); ?>
+                                        <?= $form->field($model,'content')->textarea(['rows'=>15]); ?>
+                                        <?= $form->field($model,'price')->textInput(['type'=>'number']); ?>
+                                        <?= $form->field($model,'discount')->textInput(['type'=>'number']); ?>
+                                        
                                     </div>
                                 </div>
                             </div>
                             <div class="card card-default">
                                 <div class="card-header">
-                                    <h4 class="card-title"><a href="#collapseB2" aria-expanded="true"  data-toggle="collapse" > Settings </a>
+                                    <h4 class="card-title"><a href="#collapseB2" aria-expanded="true"  data-toggle="collapse" > Những điều khoản và quy định </a>
                                     </h4>
                                 </div>
                                 <div class="panel-collapse collapse" id="collapseB2">
@@ -345,32 +298,11 @@
                                         </form>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="card card-default">
-                                <div class="card-header">
-                                    <h4 class="card-title"><a href="#collapseB3" aria-expanded="true"  data-toggle="collapse" >
-                                        Preferences </a></h4>
-                                </div>
-                                <div class="panel-collapse collapse" id="collapseB3">
-                                    <div class="card-body">
-                                        <div class="form-group">
-                                            <div class="col-sm-12">
-                                                <div class="checkbox">
-                                                    <label>
-                                                        <input type="checkbox">
-                                                        I want to receive newsletter. </label>
-                                                </div>
-                                                <div class="checkbox">
-                                                    <label>
-                                                        <input type="checkbox">
-                                                        I want to receive advice on buying and selling. </label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            </div>  
+                            <p><p>
+                            <?= Html::submitButton('Post',['class'=>'btn btn-success']); ?>
                         </div>
+                        <?php $form = ActiveForm::end(); ?>
                         <!--/.row-box End-->
 
                     </div>

@@ -4,10 +4,10 @@
 /* @var $form yii\bootstrap\ActiveForm */
 /* @var $model \frontend\models\SignupForm */
 
-use yii\helpers\Html;
-use yii\helpers\ArrayHelper;
-use yii\widgets\ActiveForm;
-use frontend\models\Province;
+    use yii\helpers\Html;
+    use yii\helpers\ArrayHelper;
+    use yii\widgets\ActiveForm;
+    use frontend\models\Province;
 ?>
         <div class="header">
         	<nav class="navbar  fixed-top navbar-site navbar-light bg-light navbar-expand-md"
@@ -126,8 +126,10 @@ use frontend\models\Province;
 
                         <?php $form = ActiveForm::begin(['id' => 'RegisterForm']); ?>
                         
-                            <?= $form->field($model,'userName')->textInput(['autofocus'=>true]); ?>
-                            <?= $form->field($model,'password')->passwordInput(); ?>
+                            <?= $form->field($model, 'userName')->textInput(['autofocus'=>true]); ?>
+                            <?= $form->field($model, 'password')->passwordInput(); ?>
+                            <?= $form->field($model, 'repeat_password')->passwordInput(); ?>
+                            <?= $form->field($model, 'email')->input('email'); ?>
                             <?= $form->field($model, 'fullName'); ?>
                             <?= $form->field($model, 'mobile')->textInput(['type' => 'number']); ?>
                             <?= $form->field($model, 'introduce')->textarea(['rows'=>3 , 'maxlength'=>200]); ?>

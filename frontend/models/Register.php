@@ -14,6 +14,7 @@ class Register extends \yii\base\Model
     public $street;
     public $selector;
     public $password;
+    public $repeat_password;
     public $mobile;
     public $description;
     public $introduce;
@@ -22,7 +23,8 @@ class Register extends \yii\base\Model
         return [
             [['userName','province','district','ward','street','password'],'required'],
             ['userName','string','min'=>3],
-            ['email','email']
+            ['email','email'],
+            ['repeat_password','compare','compareAttribute'=>'password']
         ];
     }
     

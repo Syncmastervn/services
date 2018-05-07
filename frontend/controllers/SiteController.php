@@ -20,6 +20,7 @@ use frontend\models\ContactForm;
 use frontend\models\UserLogin;
 use frontend\models\UploadImage;
 use frontend\models\Register;
+use frontend\models\Createads;
 
 //Database 
 use frontend\models\Province;
@@ -208,9 +209,11 @@ class SiteController extends Controller
     }
     
     public function actionCreateads(){
+        $model = new Createads();
         return $this->render('create-ads',[
            'imageFolder'    => $this->imageFolder,
-           'iconFolder'     => $this->iconFolder
+           'iconFolder'     => $this->iconFolder,
+            'model'         => $model
         ]);
     }
     
