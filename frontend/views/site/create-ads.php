@@ -255,7 +255,18 @@
                                         <?= $form->field($model,'content')->textarea(['rows'=>15]); ?>
                                         <?= $form->field($model,'price')->textInput(['type'=>'number']); ?>
                                         <?= $form->field($model,'discount')->textInput(['type'=>'number']); ?>
-                                        
+                                        <?= $form->field($model,'province')->dropDownList(
+                                        ArrayHelper::map(Province::find()->all(),'id','name'),
+                                                    [
+                                                        'prompt' => 'Tỉnh/thành phố'
+                                                    ]
+                                    ); ?>
+                                        <?= $form->field($model, 'district')->dropDownList([
+                                                '0' => 'Chọn huyện/thị'
+                                        ]); ?>
+                                        <?= $form->field($model, 'ward')->dropDownList([
+                                                '0' => 'Chọn xã/phường'
+                                        ]); ?>
                                     </div>
                                 </div>
                             </div>
@@ -269,32 +280,62 @@
                                         <form class="form-horizontal" role="form">
                                             <div class="form-group">
                                                 <div class="col-sm-12">
-                                                    <div class="checkbox">
-                                                        <label>
-                                                            <input type="checkbox">
-                                                            Comments are enabled on my ads </label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="col-sm-3 control-label">New Password</label>
+                                                    THÔNG TIN  
 
-                                                <div class="col-sm-9">
-                                                    <input type="password" class="form-control" placeholder="">
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="col-sm-3 control-label">Confirm Password</label>
+Chương trình Amadeus Rewards nhằm tri ân sự ủng hộ và đóng góp của tất cả các thành viên sử dụng Amadeus với nhiều loại quà tặng đa dạng, phong phú. Trang web này được sở hữu và điều hành bởi Amadeus Việt Nam.
 
-                                                <div class="col-sm-9">
-                                                    <input type="password" class="form-control" placeholder="">
+Là thành vien của Amadeus Rewards, mỗi đặt chỗ trên Amadeus sẽ được tích lũy điểm thưởng tương ứng vào tài khoản của thành viên và dễ dàng dùng để đổi quà hoặc các tặng phẩm có trong chương trình.
+
+Sau đây là bản tóm tắt các điều khoản và điều kiện của Amadeus Reward. Các điều khoản và điều kiện có thể được sửa đổi bởi Amadeus Việt Nam mà không cần báo trước, Amadeus Việt Nam có quyền duy nhất đế áp dụng các điều khoản này
+
+ 
+
+THÀNH VIÊN
+
+Thành viên được giới hạn cho các cá nhân từ 18 tuổi trở lên cư trú tại Việt Nam, những người sử dụng hệ thống đặt giữ chỗ Amadeus,
+
+Mỗi thành viên chỉ duy trì một tài khoản, dựa Mã Đăng Nhập (Sign-in) và Mã Đại lý (Office ID) của đại lý đã đăng ký với Amadeus
+
+Để tham gia chương trình Amadeus Reward, thành viên phải hoàn thành bản đăng ký trực tuyến có sẵn trên trang chủ Amadeus Rewards và chấp nhận các Điều khoản & Điều kiện của chương trình.
+
+Thành viên phải đăng ký đầy đủ các thông tin trong bản đăng ký. Thành viên có thể giữ lại tài khoản cá nhân trong trường hợp thay đổi Sign-in, Office ID hoặc thay đổi công ty làm việc - vẫn hoạt động trong ngành du lịch và là khách hàng Amadeus, và phải thông báo để Amadeus Việt Nam cập nhật tài khoản. 
+
+ 
+
+TÀI KHOẢN VÀ ĐIỂM
+
+Sau khi hoàn thành các bước đăng ký, thành viên sẽ nhận được email xác nhận thông tin và tài khoản của thành viên sẽ được kích hoạt sau khi các thông tin đăng ký được Amadeus Rewards kiểm tra và xác nhận. Điểm sẽ được tính kể từ lúc tài khoản được khởi tạo xong.
+
+Thành viên sẽ sử dụng email và mật khẩu đã đăng ký để đăng nhập và sử dụng Amadeus Rewards. Thành viên phải tự bảo quản thông tin đăng nhập, nếu có bất cứ nghi ngờ về việc xâm nhập hay sử dụng từ bên thứ 3 hãy thông báo ngay cho bộ phân hỗ trợ của Amadeus Rewards. Amadeus Rewards sẽ không chịu trách nhiệm với những tổn thất do các trường hợp trên nếu không nhận được thông báo từ thành viên
+
+Điểm của thành viên sẽ được tính bằng các công thức dựa trên segment thành viên tạo ra cộng với những chương trình thưởng điểm do Amadeus Việt Nam tổ chức. Điểm của thành viên sẽ không được quy đổi thành tiền mặt
+
+Điểm sẽ hết hạn trong vòng 24 tháng kể từ ngày điểm được tạo ra và chưa được sử dụng. Tài khoản nếu không có điểm phát sinh nào trong vòng 12 tháng hoặc những tài khoản không còn Sign-in đăng ký sẽ bị hủy và điểm trong tài khoản đó sẽ được coi như là hết hạn.
+
+ 
+
+QUY ĐỊNH CHẤM DỨT, LOẠI TRỪ THÀNH VIÊN
+
+Bất kỳ sự không tuân theo quy định, hoặc sự lạm dùng quyền hạn của chương trình gây tổn hại đến lợi ích, hình ảnh của Amadeus, hoặc các trường hợp sử dụng tài khoản sai mục đích sẽ dẫn đến việc chấm dứt quyền đăng nhập của thành viên.
+
+Amadeus có quyền đóng băng tài khoản trong các trường hợp nghi ngờ mục đích sử dụng tài khoản của thành viên trong thời gian kiểm tra thông tin tài khoản.
+
+ 
+
+PHÁP LÝ
+
+Các điều khoản và điều kiện này sẽ được điều chỉnh theo quy định của pháp luật Việt Nam. Trường hợp có một trong các quy định trên là không hợp lệ, điều này không ảnh hưởng đến các điều khoản còn lại.
+
+Trang web và tất cả văn bản, hình ảnh, thông tin bao gồm đều thuộc sở hữu và cấp phép cho Amadeus Việt Nam. Bản quyền và các tài sản sở hữu trí tuệ khác trong nội dung của trang web thuộc về duy nhất và dành riêng cho Amadeus Việt Nam
+
+Mọi thắc mắc hoặc yêu cầu vui lòng liên hệ với ban quản trị Amadeus Rewards Administrator
+
+ 
+
+Amadeus Việt Nam
                                                 </div>
                                             </div>
-                                            <div class="form-group">
-                                                <div class="col-sm-offset-3 col-sm-9">
-                                                    <button type="submit" class="btn btn-default">Update</button>
-                                                </div>
-                                            </div>
+                                            
                                         </form>
                                     </div>
                                 </div>

@@ -209,6 +209,8 @@ class SiteController extends Controller
     }
     
     public function actionCreateads(){
+        Yii::$app->controller->renderPartial('createads-assets');
+        
         $model = new Createads();
         return $this->render('create-ads',[
            'imageFolder'    => $this->imageFolder,
