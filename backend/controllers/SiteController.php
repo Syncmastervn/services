@@ -42,6 +42,7 @@ class SiteController extends Controller
     public function actionIndex()
     {
         return $this->render('index');
+        
     }
 
     /**
@@ -77,9 +78,13 @@ class SiteController extends Controller
         return $this->goHome();
     }
     
+    public function actionHome()
+    {
+        echo 'Hello';
+    }
+    
     public function actionTest(){
-        echo "<h2>TESTING</h2>";
-        echo $this->variable;
+        return $this->render('test');
     }
     
     public function actionBehavi(){

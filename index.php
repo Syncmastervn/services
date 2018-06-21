@@ -1,6 +1,6 @@
 <?php
-//require __DIR__ . "/frontend/web/index.php";
-//var_dump(__DIR__ . "/frontend/web/index.php");exit;
+// require __DIR__ . "/frontend/web/index.php";
+// var_dump(__DIR__ . "/frontend/web/index.php");exit;
 
 defined('YII_DEBUG') or define('YII_DEBUG', true);
 defined('YII_ENV') or define('YII_ENV', 'dev');
